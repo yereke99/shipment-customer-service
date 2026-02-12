@@ -1,8 +1,0 @@
-{
-  "yaml.schemaStore.enable": false,
-  "yaml.schemas": {
-    "./.vscode/compose-local.schema.json": [
-      "build/docker-compose.yml"
-    ]
-  }
-}
