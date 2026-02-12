@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+  <defs>
+    <style>
+      .title { font: 700 24px Arial, sans-serif; fill: #1f2937; }
+      .label { font: 600 16px Arial, sans-serif; fill: #111827; }
+      .text { font: 14px Arial, sans-serif; fill: #1f2937; }
+      .small { font: 12px Arial, sans-serif; fill: #374151; }
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 1.5; rx: 10; }
+      .group { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 14; }
+      .arrow { stroke: #1e293b; stroke-width: 2; fill: none; marker-end: url(#arrowHead); }
+      .trace { stroke: #0f766e; stroke-width: 2; fill: none; marker-end: url(#arrowTrace); }
+      .grpc { stroke: #7c3aed; stroke-width: 2; fill: none; marker-end: url(#arrowGrpc); }
+    </style>
+    <marker id="arrowHead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b" />
+    </marker>
+    <marker id="arrowTrace" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0f766e" />
+    </marker>
+    <marker id="arrowGrpc" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed" />
+    </marker>
+  </defs>
+
+  <text x="40" y="42" class="title">Shipment Customer Service Architecture</text>
+
+  <rect x="30" y="80" width="270" height="620" class="group" />
+  <text x="45" y="112" class="label">External</text>
+
+  <rect x="330" y="80" width="1040" height="620" class="group" />
+  <text x="345" y="112" class="label">Docker network internal</text>
+
+  <rect x="70" y="170" width="190" height="70" class="box" />
+  <text x="120" y="212" class="label">Client</text>
+
+  <rect x="70" y="560" width="190" height="90" class="box" />
+  <text x="105" y="595" class="label">Jaeger UI</text>
+  <text x="120" y="620" class="small">:16686</text>
+
+  <rect x="390" y="170" width="280" height="90" class="box" />
+  <text x="490" y="205" class="label">Envoy</text>
+  <text x="430" y="228" class="small">:8080 REST, :9090 gRPC</text>
+
+  <rect x="760" y="170" width="250" height="80" class="box" />
+  <text x="800" y="205" class="label">shipment-service</text>
+  <text x="860" y="228" class="small">:8080</text>
+
+  <rect x="760" y="300" width="250" height="80" class="box" />
+  <text x="800" y="335" class="label">customer-service</text>
+  <text x="860" y="358" class="small">:9090</text>
+
+  <rect x="1090" y="300" width="220" height="80" class="box" />
+  <text x="1150" y="335" class="label">Postgres</text>
+  <text x="1185" y="358" class="small">:5432</text>
+
+  <rect x="760" y="510" width="250" height="90" class="box" />
+  <text x="800" y="545" class="label">otel-collector</text>
+  <text x="860" y="568" class="small">:4317</text>
+
+  <rect x="1090" y="510" width="220" height="90" class="box" />
+  <text x="1165" y="545" class="label">Jaeger</text>
+
+  <path d="M260 205 L390 205" class="arrow" />
+  <text x="285" y="190" class="small">HTTP /api/v1/*</text>
+
+  <path d="M670 210 L760 210" class="arrow" />
+  <text x="680" y="195" class="small">HTTP :8080</text>
+
+  <path d="M885 250 L885 300" class="grpc" />
+  <text x="900" y="278" class="small">gRPC via Envoy :9090</text>
+
+  <path d="M760 340 L670 340 L670 245" class="grpc" />
+  <text x="535" y="330" class="small">customer.CustomerService/*</text>
+
+  <path d="M1010 340 L1090 340" class="arrow" />
+  <text x="1030" y="325" class="small">SQL</text>
+
+  <path d="M885 250 L885 510" class="trace" />
+  <text x="900" y="430" class="small">OTLP traces</text>
+
+  <path d="M760 340 L700 340 L700 550 L760 550" class="trace" />
+  <text x="650" y="505" class="small">OTLP traces</text>
+
+  <path d="M530 260 L530 550 L760 550" class="trace" />
+  <text x="540" y="410" class="small">OTLP traces</text>
+
+  <path d="M1010 555 L1090 555" class="trace" />
+  <text x="1028" y="540" class="small">OTLP</text>
+
+  <path d="M260 605 L1090 605" class="arrow" />
+  <text x="620" y="590" class="small">Open UI</text>
+</svg>
